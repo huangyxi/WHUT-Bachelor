@@ -1,4 +1,4 @@
-# WHUT Bachelor's Degree Thesis LaTeX Template v 0.9
+# LaTeX Template for Bachelor's Degree Thesis of WHUT v 0.9a
 
 ## 简介
 

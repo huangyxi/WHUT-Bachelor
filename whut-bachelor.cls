@@ -7,7 +7,7 @@
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{whut-bachelor}
-[2019/09/29 v0.9 Unofficial LaTeX Class for WHUT Bachelor Thesis]
+[2019/12/31 v0.9a Unofficial LaTeX Class for WHUT Bachelor Thesis]
 \RequirePackage{ifxetex}
 \RequireXeTeX
 \ifxetex\else
@@ -95,6 +95,8 @@
 	%	pdfborder=001
 }
 
+{\sf}	% the serial number of first section will be wrong if missing this line
+% and not printing `maketitle'
 \renewcommand{\maketitle}{\par
 	\begingroup
 	\newpage
@@ -178,7 +180,7 @@
 }{%
 	\endquotation
 	\thispagestyle{empty}
-	\newpage
+	\clearpage
 }
 
 \newenvironment{enabstract}{%
@@ -233,7 +235,7 @@
 
 \ctexset{
 	section = {
-		format = \centering\bfseries\zihao{-2},
+		format = \centering\bfseries\zihao{-2},	%\CTEXifname{\raggedright}{\centering}
 		numberformat = \mdseries\sffamily,
 		name = {第, 章}
 	},
