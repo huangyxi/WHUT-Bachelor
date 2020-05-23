@@ -7,7 +7,7 @@
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{whut-bachelor}
-[2019/12/31 v0.9a Unofficial LaTeX Class for WHUT Bachelor Thesis]
+[2020/05/23 v0.9b Unofficial LaTeX Class for WHUT Bachelor Thesis]
 \RequirePackage{ifxetex}
 \RequireXeTeX
 \ifxetex\else
@@ -23,9 +23,11 @@
 \newcommand*\whut@tokens@keywords{}
 \newif\ifwhut@options@minimal\whut@options@minimalfalse
 \newif\ifwhut@options@nobib\whut@options@nobibfalse
+\newif\ifwhut@options@noextrafonts\whut@options@noextrafontsfalse
 
 \DeclareOption{minimal}{\whut@options@minimaltrue}	% only load packages when needed
 \DeclareOption{nobib}{\whut@options@nobibtrue}	% do NOT load biblatex
+\DeclareOption{noextrafonts}{\whut@options@noextrafontstrue}	% do NOT use SinoType(R) fonts: STzhongsong
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 %\ExecuteOptions{doctor,chinese,print,super}
 \ProcessOptions\relax
@@ -38,7 +40,12 @@
 %% load packages
 %\RequirePackage{ctex}
 
-\providecommand{\zhongsong}{\CJKfontspec{STZhongsong}}	%华文中宋
+\ifwhut@options@noextrafonts
+	\providecommand{\zhongsong}{}
+\else
+	\providecommand{\zhongsong}{\CJKfontspec{STZhongsong}}	%华文中宋
+\fi
+
 \RequirePackage{fontspec}
 \setmainfont{Times New Roman}
 \setsansfont{Arial}
@@ -56,6 +63,8 @@
 \ifwhut@options@minimal\else
 \RequirePackage{, amssymb}
 \RequirePackage{bm}
+\RequirePackage{enumitem}
+\setlist[1]{parsep=0ex, topsep=1ex, itemsep=0ex}
 \RequirePackage{xcolor}
 \RequirePackage{graphicx}
 \RequirePackage{array, longtable, booktabs}
@@ -175,21 +184,23 @@
 	\newcommand*{\whut@cap@abstractname}{\whut@cap@zhabstractname}
 	\pagenumbering{Roman}
 	\section*{\whut@cap@abstractname}
-	\addcontentsline{toc}{section}{\whut@cap@abstractname}
+	% \addcontentsline{toc}{section}{\whut@cap@abstractname}
 	\quotation
 }{%
 	\endquotation
-	\thispagestyle{empty}
+	\pagenumbering{Roman}
+	% \thispagestyle{empty}
 	\clearpage
 }
 
 \newenvironment{enabstract}{%
 	\section*{\whut@cap@enabstractname}
-	\addcontentsline{toc}{section}{\whut@cap@enabstractname}
+	% \addcontentsline{toc}{section}{\whut@cap@enabstractname}
 	\quotation
 }{%
 	\endquotation
-	\thispagestyle{empty}
+	% \pagenumbering{roman}
+	% \thispagestyle{empty}
 	\clearpage
 }
 
@@ -258,11 +269,11 @@
 \let\@tableofcontents\tableofcontents
 \renewcommand{\tableofcontents}{%
 	\clearpage
-	\pagestyle{empty}
+	% \pagestyle{empty}
 	\begingroup
 	\renewcommand{\thispagestyle}[1]{}
 	\@tableofcontents
-	\addcontentsline{toc}{section}{\whut@cap@contentsname}
+	% \addcontentsline{toc}{section}{\whut@cap@contentsname}
 	\endgroup
 	\clearpage
 	\pagestyle{fancy}

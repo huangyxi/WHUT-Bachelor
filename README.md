@@ -1,13 +1,20 @@
-# LaTeX Template for Bachelor's Degree Thesis of WHUT v 0.9a
+# LaTeX Template for Bachelor's Degree Thesis of WHUT v0.9b
 
 ## 简介
 
 - 编译要求：XeLaTeX & biber
 - 编译环境：TeX Live 2019
+- 编译系统：Windows
 
 本项目首次发布于2019年9月29日。
 
 ## 简明帮助
+
+参照 [`main.tex`](main.tex) 以及 `body/` 文件夹中文件修改即可。
+
+对于使用 [Overleaf](https://www.overleaf.com/) 或其他尚未安装 *华文中宋 (STzhongsong)* 字体的系统，请在 [`main.tex`](main.tex) 中导入文档类 [`whut-bachelor`](whut-bachelor.cls) 时传入参数 `noextrafonts`
+(即 `\documentclass[noextrafonts]{whut-bachelor}`)。
+**注意**：此时封面标题等部分字体将不再满足《武汉理工大学本科生毕业设计（论文）撰写规范》要求，请于之后手动修改。
 
 ### 目录结构
 
