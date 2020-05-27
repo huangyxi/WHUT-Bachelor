@@ -7,12 +7,12 @@
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{whut-bachelor}
-[2020/05/23 v0.9b Unofficial LaTeX Class for WHUT Bachelor Thesis]
+[2020/05/28 v0.91 Unofficial LaTeX Document Class for WHUT Bachelor Thesis]
 \RequirePackage{ifxetex}
 \RequireXeTeX
 \ifxetex\else
 \ClassError{whut-bachelor}{You must use the `xelatex' driver\MessageBreak Please choose `xelatex'}{%
-	Just choose `xelatex', no `pdflatex' or `latex' and so on.}
+	Just choose `xelatex', not `pdflatex', `lualatex' or `latex', etc.}
 \fi
 
 \newcommand*\whut@tokens@title{}
@@ -50,9 +50,12 @@
 \setmainfont{Times New Roman}
 \setsansfont{Arial}
 \RequirePackage{amsmath, amsfonts}
-\RequirePackage{geometry}
-% \geometry{top=2.54cm,bottom=2.54cm,left=3.17cm,right=2.75cm}
-\geometry{top=2.5cm,bottom=2cm,left=2.5cm,right=2cm}
+\RequirePackage[includeheadfoot]{geometry}
+\geometry{
+	top=2.5cm, bottom=2cm, left=2.5cm, right=2cm,
+	headheight=0.8cm, headsep=0.2cm, footskip=0.1cm
+}
+\RequirePackage{titlesec}
 \RequirePackage{fancyhdr}
 \RequirePackage{titletoc}
 
@@ -61,7 +64,7 @@
 \fi
 
 \ifwhut@options@minimal\else
-\RequirePackage{, amssymb}
+\RequirePackage{amssymb}
 \RequirePackage{bm}
 \RequirePackage{enumitem}
 \setlist[1]{parsep=0ex, topsep=1ex, itemsep=0ex}
@@ -83,12 +86,13 @@
 \setlength{\baselineskip}{20pt}
 % \renewcommand*{\baselinestretch}{1.5}
 \renewcommand\normalsize{
-	\abovedisplayskip 1\p@ \@plus2\p@ \@minus5\p@
+	\abovedisplayskip 6\p@ \@plus3\p@ \@minus9\p@
 	\abovedisplayshortskip \z@ \@plus3\p@
-	\belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
+	\belowdisplayshortskip 7\p@ \@plus3\p@ \@minus4\p@
 	\belowdisplayskip \abovedisplayskip
 	\let\@listi\@listI
 }
+\captionsetup[figure]{skip = {5pt plus 2pt minus 1pt}}
 
 \hypersetup{
 	pdfstartview=FitH,
@@ -248,15 +252,21 @@
 	section = {
 		format = \centering\bfseries\zihao{-2},	%\CTEXifname{\raggedright}{\centering}
 		numberformat = \mdseries\sffamily,
-		name = {第, 章}
+		name = {第, 章},
+		beforeskip = 0.5\baselineskip,
+		afterskip = 0.5\baselineskip,
 	},
 	subsection = {
 		format = \bfseries\zihao{3},
 		numberformat = \mdseries\sffamily,
+		beforeskip = 0.5\baselineskip,
+		afterskip = 0.5\baselineskip,
 	},
 	subsubsection = {
 		format = \bfseries\zihao{4},
 		numberformat = \mdseries\sffamily,
+		beforeskip = 0.5\baselineskip,
+		afterskip = 0.5\baselineskip,
 	}
 }
 
