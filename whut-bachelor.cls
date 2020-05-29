@@ -7,13 +7,7 @@
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{whut-bachelor}
-[2020/05/28 v0.91 Unofficial LaTeX Document Class for WHUT Bachelor Thesis]
-\RequirePackage{ifxetex}
-\RequireXeTeX
-\ifxetex\else
-\ClassError{whut-bachelor}{You must use the `xelatex' driver\MessageBreak Please choose `xelatex'}{%
-	Just choose `xelatex', not `pdflatex', `lualatex' or `latex', etc.}
-\fi
+[2020/05/29 v0.99 Unofficial LaTeX Document Class for WHUT Bachelor Thesis]
 
 \newcommand*\whut@tokens@title{}
 \newcommand*\whut@tokens@school{}
@@ -25,13 +19,22 @@
 \newif\ifwhut@options@nobib\whut@options@nobibfalse
 \newif\ifwhut@options@noextrafonts\whut@options@noextrafontsfalse
 
-\DeclareOption{minimal}{\whut@options@minimaltrue}	% only load packages when needed
+\DeclareOption{minimal}{\whut@options@minimaltrue}	% only load fundamental packages
 \DeclareOption{nobib}{\whut@options@nobibtrue}	% do NOT load biblatex
 \DeclareOption{noextrafonts}{\whut@options@noextrafontstrue}	% do NOT use SinoType(R) fonts: STzhongsong
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 %\ExecuteOptions{doctor,chinese,print,super}
 \ProcessOptions\relax
+
+\ifwhut@options@minimal
+	\whut@options@nobibtrue
+\fi
+
+\RequirePackage{ifxetex}
+\ifxetex
 \PassOptionsToPackage{quiet}{xeCJK}
+\fi
+
 \LoadClass[a4paper, 12pt]{ctexart}
 \ifwhut@options@minimal\whut@options@nobibtrue\fi
 
@@ -53,9 +56,9 @@
 \RequirePackage[includeheadfoot]{geometry}
 \geometry{
 	top=2.5cm, bottom=2cm, left=2.5cm, right=2cm,
-	headheight=0.8cm, headsep=0.2cm, footskip=0.1cm
-}
-\RequirePackage{titlesec}
+	headheight=13pt, headsep=0.1cm, footskip=0.51cm
+}	% footskip should be 0.4cm, but this is too small
+\RequirePackage[indentafter]{titlesec}	% \titlespacing*
 \RequirePackage{fancyhdr}
 \RequirePackage{titletoc}
 
@@ -72,6 +75,9 @@
 \RequirePackage{graphicx}
 \RequirePackage{array, longtable, booktabs}
 \RequirePackage{multirow, bigstrut, bigdelim}
+\RequirePackage{caption, subcaption}
+\captionsetup{labelsep = quad}
+\captionsetup[figure]{skip = {5pt plus 2pt minus 1pt}}
 \RequirePackage{cprotect}
 \RequirePackage{listings}
 %\RequirePackage{tikz}
@@ -86,13 +92,15 @@
 \setlength{\baselineskip}{20pt}
 % \renewcommand*{\baselinestretch}{1.5}
 \renewcommand\normalsize{
-	\abovedisplayskip 6\p@ \@plus3\p@ \@minus9\p@
+	\abovedisplayskip 6\p@ \@plus2\p@ \@minus4\p@	% tolerance ±
 	\abovedisplayshortskip \z@ \@plus3\p@
 	\belowdisplayshortskip 7\p@ \@plus3\p@ \@minus4\p@
 	\belowdisplayskip \abovedisplayskip
 	\let\@listi\@listI
 }
-\captionsetup[figure]{skip = {5pt plus 2pt minus 1pt}}
+\titlespacing*{\section}{0pt}{0.5\baselineskip}{0.5\baselineskip}
+\titlespacing*{\subsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
+\titlespacing*{\subsubsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
 
 \hypersetup{
 	pdfstartview=FitH,
@@ -101,14 +109,13 @@
 	bookmarksopen=true,
 	allcolors=blue,
 	pdfsubject={WHUT Bachelor Thesis},
-	pdfcreator={whut-bachelor class},
-	baseurl={https://github.com/Markhng/WHUT-Bachelor},
+	pdfcreator={whut-bachelor class [github.com/Markhng/WHUT-Bachelor]},
 	%	linkcolor=MidnightBlue,
 	%	citecolor=Olive,
 	%	pdfborder=001
 }
 
-{\sf}	% the serial number of first section will be wrong if missing this line
+{\sf}	% the serial number of the first section will be wrong if missing this line
 % and not printing `maketitle'
 \renewcommand{\maketitle}{\par
 	\begingroup
@@ -185,26 +192,25 @@
 }
 
 \renewenvironment{abstract}{%
-	\newcommand*{\whut@cap@abstractname}{\whut@cap@zhabstractname}
+	\section*{\pdfbookmark[1]{\whut@cap@zhabstractname}{zhabstract}\whut@cap@zhabstractname}
 	\pagenumbering{Roman}
-	\section*{\whut@cap@abstractname}
 	% \addcontentsline{toc}{section}{\whut@cap@abstractname}
 	\quotation
+	\pagestyle{plain}
 }{%
+	\thispagestyle{plain}
 	\endquotation
-	\pagenumbering{Roman}
-	% \thispagestyle{empty}
 	\clearpage
 }
 
 \newenvironment{enabstract}{%
-	\section*{\whut@cap@enabstractname}
+	\section*{\pdfbookmark[1]{\whut@cap@enabstractname}{enabstract}\whut@cap@enabstractname}
 	% \addcontentsline{toc}{section}{\whut@cap@enabstractname}
 	\quotation
+	\pagestyle{plain}
 }{%
+	\thispagestyle{plain}
 	\endquotation
-	% \pagenumbering{roman}
-	% \thispagestyle{empty}
 	\clearpage
 }
 
@@ -228,23 +234,31 @@
 %% define toc style
 \titlecontents{section}[0pt]{\mdseries}
 {\thecontentslabel\hskip.5em}{}{\titlerule*[0.5pc]{.}\contentspage}
-\titlecontents{subsection}[3ex]{\mdseries}
+\titlecontents{subsection}[4ex]{\mdseries}
 {\thecontentslabel\hskip.5em}{}{\titlerule*[0.5pc]{.}\contentspage}
-\titlecontents{subsubsection}[6ex]{\mdseries}
+\titlecontents{subsubsection}[8ex]{\mdseries}
 {\thecontentslabel\hskip.5em}{}{\titlerule*[0.5pc]{.}\contentspage}
 
 \numberwithin{equation}{section}
 \numberwithin{table}{section}
 \numberwithin{figure}{section}
 
+\pagestyle{fancy}
 \fancyhf{}
 \fancyhead[C]{\zihao{5} \whut@cap@titlename}
 \fancyfoot[C]{\zihao{5} \thepage}
-\def\headrule{
-	\vspace{1ex}
-	\hrule\@height\headrulewidth \@width\headwidth
-}
+%\def\headrule{
+%	\vspace{0pt}
+%	\hrule\@height\headrulewidth \@width\headwidth
+%}
 \renewcommand{\headrulewidth}{0.65pt}
+
+\fancypagestyle{plain}{%
+	\fancyhf{}
+%	\fancyhead[C]{\zihao{5} \whut@cap@titlename}
+	\fancyfoot[C]{\zihao{5} \thepage}
+	\renewcommand{\headrulewidth}{0pt}
+}
 
 \setcounter{secnumdepth}{3}
 
@@ -253,40 +267,38 @@
 		format = \centering\bfseries\zihao{-2},	%\CTEXifname{\raggedright}{\centering}
 		numberformat = \mdseries\sffamily,
 		name = {第, 章},
-		beforeskip = 0.5\baselineskip,
-		afterskip = 0.5\baselineskip,
+		% fixskip = true,
+		% beforeskip = 0.5\baselineskip, % no space between header and title, use `\titlespacing*' above instead
+		% afterskip = 0.5\baselineskip,
 	},
 	subsection = {
 		format = \bfseries\zihao{3},
 		numberformat = \mdseries\sffamily,
-		beforeskip = 0.5\baselineskip,
-		afterskip = 0.5\baselineskip,
+		% fixskip = true,
+		% beforeskip = 0.5\baselineskip,
+		% afterskip = 0.5\baselineskip,
 	},
 	subsubsection = {
 		format = \bfseries\zihao{4},
 		numberformat = \mdseries\sffamily,
-		beforeskip = 0.5\baselineskip,
-		afterskip = 0.5\baselineskip,
+		% fixskip = true,
+		% beforeskip = 0.5\baselineskip,
+		% afterskip = 0.5\baselineskip,
 	}
 }
-
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[C]{\zihao{5} \whut@cap@titlename}
-\fancyfoot[C]{\zihao{5} \thepage}
-\renewcommand{\headrulewidth}{0.65pt}
 
 \let\@tableofcontents\tableofcontents
 \renewcommand{\tableofcontents}{%
 	\clearpage
-	% \pagestyle{empty}
 	\begingroup
-	\renewcommand{\thispagestyle}[1]{}
+	\pagestyle{plain}
+	\pdfbookmark[1]{\whut@cap@contentsname}{contents}
 	\@tableofcontents
 	% \addcontentsline{toc}{section}{\whut@cap@contentsname}
 	\endgroup
+	\thispagestyle{plain}
 	\clearpage
-	\pagestyle{fancy}
+	% \pagestyle{fancy}
 	\pagenumbering{arabic}
 	\let\@tableofcontents\relex
 }
@@ -341,15 +353,19 @@
 }
 
 %% define bibliography printing
-\ifwhut@options@nobib
-\providecommand{\references}{%
-	\ClassWarning{whut-bachelor}{`minimal' or `nobib' option set, command `references' unavailable}
+\ifwhut@options@nobib\else
+\renewcommand{\refname}{\whut@cap@refname}
+\defbibheading{bibliography}[\refname]{%
+	\clearpage%
+	\phantomsection%
+	\addcontentsline{toc}{section}{\whut@cap@refname}%
+	\section*{#1}%
 }
-\else
 \renewcommand{\bibfont}{\zihao{5}}
 \providecommand{\references}{%
-	\printbibliography[title=\whut@cap@refname]
-	\addcontentsline{toc}{section}{\whut@cap@refname}
+	\ClassWarning{whut-bachelor}{Command `\noexpand\references' is obsoleted, use `\noexpand\printbibliography' directly.}
+	\printbibliography
+
 }
 \fi
 
