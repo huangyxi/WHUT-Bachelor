@@ -1,4 +1,4 @@
-# LaTeX Template for Bachelor's Degree Thesis of WHUT v0.99
+# LaTeX Template for Bachelor's Degree Thesis of WHUT v0.991
 
 ## 简介
 
@@ -10,7 +10,7 @@
 
 ## 简明帮助
 
-参照 [`main.tex`](main.tex) 以及 `body/` 文件夹中文件修改即可。
+参照 [`main.tex`](main.tex) 以及 [`body/`](body/) 文件夹中文件修改即可。
 
 对于使用 [Overleaf](https://www.overleaf.com/) 或其他尚未安装 *华文中宋 (STzhongsong)* 字体的系统，请在 [`main.tex`](main.tex) 中导入文档类 [`whut-bachelor`](whut-bachelor.cls) 时传入参数 `noextrafonts`
 (即 `\documentclass[noextrafonts]{whut-bachelor}`)。
@@ -37,4 +37,4 @@
 - 补充帮助
 - 补充示例
 
-如果您对本模板的各方面有意见或建议，欢迎提出 issue。
+如果您对本模板的各方面有意见或建议，欢迎提出 [issues](https://github.com/Markhng/WHUT-Bachelor/issues) 或 [pull requests](https://github.com/Markhng/WHUT-Bachelor/pulls)。

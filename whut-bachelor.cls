@@ -7,7 +7,7 @@
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{whut-bachelor}
-[2020/05/29 v0.99 Unofficial LaTeX Document Class for WHUT Bachelor Thesis]
+[2021/03/17 v0.991 Unofficial LaTeX Document Class for WHUT Bachelor Thesis]
 
 \newcommand*\whut@tokens@title{}
 \newcommand*\whut@tokens@school{}
@@ -88,6 +88,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% define markups
+
+\widowpenalty=10000
+\clubpenalty=10000
 
 \setlength{\baselineskip}{20pt}
 % \renewcommand*{\baselinestretch}{1.5}
