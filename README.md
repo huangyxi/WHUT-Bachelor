@@ -13,8 +13,8 @@
 参照 [`main.tex`](main.tex) 以及 [`body/`](body/) 文件夹中文件修改即可。
 
 对于使用 [Overleaf](https://www.overleaf.com/) 或其他尚未安装 *华文中宋 (STzhongsong)* 字体的系统，请在 [`main.tex`](main.tex) 中导入文档类 [`whut-bachelor`](whut-bachelor.cls) 时传入参数 `noextrafonts`
-(即 `\documentclass[noextrafonts]{whut-bachelor}`)。
-**注意**：此时封面标题等部分使用“华文中宋”字体的内容将使用repo中[STZhongsong.ttf](./blob/master/STZhongsong.ttf)文件来满足字体要求。
+(即 `\documentclass[noextrafonts]{whut-bachelor}`)。  
+**注意**：此时封面标题等部分使用“华文中宋”字体的内容将使用repo中[STZhongsong.ttf](./STZhongsong.ttf)文件来满足字体要求。
 
 ### 目录结构
 
