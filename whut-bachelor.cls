@@ -44,7 +44,7 @@
 %\RequirePackage{ctex}
 
 \ifwhut@options@noextrafonts
-	\providecommand{\zhongsong}{}
+	\providecommand{\zhongsong}{\CJKfontspec{STZhongsong.ttf}} % 外部华文中宋字体
 \else
 	\providecommand{\zhongsong}{\CJKfontspec{STZhongsong}}	%华文中宋
 \fi

@@ -14,7 +14,7 @@
 
 对于使用 [Overleaf](https://www.overleaf.com/) 或其他尚未安装 *华文中宋 (STzhongsong)* 字体的系统，请在 [`main.tex`](main.tex) 中导入文档类 [`whut-bachelor`](whut-bachelor.cls) 时传入参数 `noextrafonts`
 (即 `\documentclass[noextrafonts]{whut-bachelor}`)。
-**注意**：此时封面标题等部分字体将不再满足《武汉理工大学本科生毕业设计（论文）撰写规范》要求，请于之后手动修改。
+**注意**：此时封面标题等部分使用“华文中宋”字体的内容将使用repo中[STZhongsong.ttf](./blob/master/STZhongsong.ttf)文件来满足字体要求。
 
 ### 目录结构
 
