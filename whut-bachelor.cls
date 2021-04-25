@@ -113,6 +113,9 @@
 	allcolors=blue,
 	pdfsubject={WHUT Bachelor Thesis},
 	pdfcreator={whut-bachelor class [github.com/Markhng/WHUT-Bachelor]},
+	colorlinks=true,
+    linkcolor=black, % 不加入此项时Overleaf导出PDF会将链接用红框圈起
+    citecolor=black, % 不加入此项时Overleaf导出PDF会将引用用绿框圈起
 	%	linkcolor=MidnightBlue,
 	%	citecolor=Olive,
 	%	pdfborder=001
