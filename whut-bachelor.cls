@@ -17,12 +17,14 @@
 \newcommand*\whut@tokens@keywords{}
 \newif\ifwhut@options@minimal\whut@options@minimalfalse
 \newif\ifwhut@options@nobib\whut@options@nobibfalse
+\newif\ifwhut@options@heitipatch\whut@options@heitipatchfalse
 
 \DeclareOption{minimal}{\whut@options@minimaltrue}	% only load fundamental packages
 \DeclareOption{nobib}{\whut@options@nobibtrue}	% do NOT load biblatex
 \DeclareOption{noextrafonts}{
 	\ClassWarning{whut-bachelor}{the `noextrafonts' is deprecated, and it now can be detected automatically}
 }	% do NOT use SinoType(R) fonts: STzhongsong (DEPRECATED)
+\DeclareOption{heitipatch}{\whut@options@heitipatchtrue}	% patch for a latex3 bug to make `heiti' as bold text
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 %\ExecuteOptions{doctor,chinese,print,super}
 \ProcessOptions\relax
@@ -57,6 +59,14 @@
 		\providecommand{\zhongsong}{\songti}
 	}
 }
+
+\ifwhut@options@heitipatch
+	\IfFontExistsTF{SimSun}{
+		\setCJKmainfont{SimSun}[BoldFont={SimHei}, ItalicFont={SimKai}]
+	}{
+		\setCJKmainfont{FandolSong}[BoldFont={FandolHei}, ItalicFont={FandolKai}]
+	}
+\fi
 
 \RequirePackage{amsmath, amsfonts}
 \RequirePackage[includeheadfoot]{geometry}
