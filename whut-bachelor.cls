@@ -162,7 +162,7 @@
 	\vspace*{2.2cm}
 	{\zihao{1}\zhongsong \whut@cap@titlename} \\
 	\vspace*{3.3cm}
-	{\zihao{2}\bfseries\sffamily \whut@tokens@title}\\
+	{\zihao{2}\bfseries \whut@tokens@title}\\
 	\vspace*{5.5cm}
 	\zhongsong
 	\begin{tabular}{cc}
