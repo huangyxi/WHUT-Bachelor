@@ -3,7 +3,7 @@
 ## 简介
 
 - 编译要求：XeLaTeX & biber
-- 编译环境：TeX Live 2019
+- 编译环境：TeX Live 2021
 - 编译系统：Windows
 
 本项目首次发布于2019年9月29日。
@@ -12,9 +12,13 @@
 
 参照 [`main.tex`](main.tex) 以及 [`body/`](body/) 文件夹中文件修改即可。
 
-对于使用 [Overleaf](https://www.overleaf.com/) 或其他尚未安装 *华文中宋 (STzhongsong)* 字体的系统，请在 [`main.tex`](main.tex) 中导入文档类 [`whut-bachelor`](whut-bachelor.cls) 时传入参数 `noextrafonts`
-(即 `\documentclass[noextrafonts]{whut-bachelor}`)。
-**注意**：此时封面标题等部分字体将不再满足《武汉理工大学本科生毕业设计（论文）撰写规范》要求，请于之后手动修改。
+对于使用 [Overleaf](https://www.overleaf.com/) 或其他尚未安装 *华文中宋 (STzhongsong)* 字体的系统，
+
+~~请在 [`main.tex`](main.tex) 中导入文档类 [`whut-bachelor`](whut-bachelor.cls) 时传入参数 `noextrafonts`(即 `\documentclass[noextrafonts]{whut-bachelor}`)。~~
+
+从`v0.999`开始，本文档类将自动替换缺省的 *华文中宋* 为 *宋体*，无需手动声明，`noextrafonts` 选项已弃用。
+
+**注意**：此时封面标题等部分字体将不再满足《武汉理工大学本科生毕业设计（论文）撰写规范》要求，如果需要在缺省华文中宋的环境下使用该字体，请在获取字体版权方授权的前提下，将字体命名为`STZhongsong.ttf`，并放置在项目根目录(`./`)。
 
 ### 目录结构
 
@@ -37,4 +41,4 @@
 - 补充帮助
 - 补充示例
 
-如果您对本模板的各方面有意见或建议，欢迎提出 [issues](https://github.com/Markhng/WHUT-Bachelor/issues) 或 [pull requests](https://github.com/Markhng/WHUT-Bachelor/pulls)。
+如果阁下对本模板的各方面有意见或建议，欢迎提出 [issues](https://github.com/Markhng/WHUT-Bachelor/issues) 或 [pull requests](https://github.com/Markhng/WHUT-Bachelor/pulls)。

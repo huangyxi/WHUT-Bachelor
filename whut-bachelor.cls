@@ -17,11 +17,12 @@
 \newcommand*\whut@tokens@keywords{}
 \newif\ifwhut@options@minimal\whut@options@minimalfalse
 \newif\ifwhut@options@nobib\whut@options@nobibfalse
-\newif\ifwhut@options@noextrafonts\whut@options@noextrafontsfalse
 
 \DeclareOption{minimal}{\whut@options@minimaltrue}	% only load fundamental packages
 \DeclareOption{nobib}{\whut@options@nobibtrue}	% do NOT load biblatex
-\DeclareOption{noextrafonts}{\whut@options@noextrafontstrue}	% do NOT use SinoType(R) fonts: STzhongsong
+\DeclareOption{noextrafonts}{
+	\ClassWarning{whut-bachelor}{the `noextrafonts' is deprecated, and it now can be detected automatically}
+}	% do NOT use SinoType(R) fonts: STzhongsong (DEPRECATED)
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 %\ExecuteOptions{doctor,chinese,print,super}
 \ProcessOptions\relax
@@ -43,15 +44,20 @@
 %% load packages
 %\RequirePackage{ctex}
 
-\ifwhut@options@noextrafonts
-	\providecommand{\zhongsong}{}
-\else
-	\providecommand{\zhongsong}{\CJKfontspec{STZhongsong}}	%华文中宋
-\fi
-
 \RequirePackage{fontspec}
 \setmainfont{Times New Roman}
 \setsansfont{Arial}
+\IfFontExistsTF{STZhongsong}{
+	\providecommand{\zhongsong}{\CJKfontspec{STZhongsong}}
+}{
+	\IfFontExistsTF{STZhongsong.ttf}{
+		\providecommand{\zhongsong}{\CJKfontspec{STZhongsong.ttf}}
+	}{
+		\ClassWarning{whut-bachelor}{There is NO font `STZhongsong' in your enviroment. you should install it to meet the requirements.}
+		\providecommand{\zhongsong}{\songti}
+	}
+}
+
 \RequirePackage{amsmath, amsfonts}
 \RequirePackage[includeheadfoot]{geometry}
 \geometry{
