@@ -34,9 +34,8 @@
 \fi
 
 \RequirePackage{ifxetex}
-\ifxetex
+\RequireXeTeX
 \PassOptionsToPackage{quiet}{xeCJK}
-\fi
 
 \LoadClass[a4paper, 12pt]{ctexart}
 \ifwhut@options@minimal\whut@options@nobibtrue\fi
