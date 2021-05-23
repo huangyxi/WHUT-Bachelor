@@ -233,8 +233,9 @@
 }
 
 \newenvironment{acknowledgement}{%
-	\section*{\whut@cap@acknowledgement}
+	\phantomsection
 	\addcontentsline{toc}{section}{\whut@cap@acknowledgement}
+	\section*{\whut@cap@acknowledgement}
 	\quotation
 }{%
 	\endquotation
