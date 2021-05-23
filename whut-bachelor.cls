@@ -109,12 +109,13 @@
 
 \setlength{\baselineskip}{20pt}
 % \renewcommand*{\baselinestretch}{1.5}
-\renewcommand\normalsize{
-	\abovedisplayskip 6\p@ \@plus2\p@ \@minus4\p@	% tolerance ±
-	\abovedisplayshortskip \z@ \@plus3\p@
-	\belowdisplayshortskip 7\p@ \@plus3\p@ \@minus4\p@
-	\belowdisplayskip \abovedisplayskip
-	\let\@listi\@listI
+\renewcommand\normalsize{%
+	\@setfontsize \normalsize {10.53937}{12.64725}%
+	\abovedisplayskip 6\p@ \@plus2\p@ \@minus4\p@	% tolerance ±%
+	\abovedisplayshortskip \z@ \@plus3\p@%
+	\belowdisplayshortskip 7\p@ \@plus3\p@ \@minus4\p@%
+	\belowdisplayskip \abovedisplayskip%
+	\let\@listi\@listI%
 }
 \titlespacing*{\section}{0pt}{0.5\baselineskip}{0.5\baselineskip}
 \titlespacing*{\subsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
