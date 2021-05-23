@@ -7,7 +7,7 @@
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{whut-bachelor}
-[2021/04/28 v0.999 Unofficial LaTeX Document Class for WHUT Bachelor Thesis]
+[2021/05/23 v0.999a Unofficial LaTeX Document Class for WHUT Bachelor Thesis]
 
 \newcommand*\whut@tokens@title{}
 \newcommand*\whut@tokens@school{}
