@@ -2,7 +2,7 @@
 %% UNOFFICIAL LaTeX Template for WHUT Bachelor Thesis
 %% First Released on 2019/09/29
 %% Created by Huang Yuxi
-%% See https://github.com/Markhng/WHUT-Bachelor
+%% See https://github.com/huangyxi/WHUT-Bachelor
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
@@ -127,7 +127,7 @@
 	bookmarksopen=true,
 	allcolors=blue,
 	pdfsubject={WHUT Bachelor Thesis},
-	pdfcreator={whut-bachelor class [github.com/Markhng/WHUT-Bachelor]},
+	pdfcreator={whut-bachelor class [github.com/huangyxi/WHUT-Bachelor]},
 	%	linkcolor=MidnightBlue,
 	%	citecolor=Olive,
 	%	pdfborder=001

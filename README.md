@@ -43,4 +43,4 @@
 - 补充帮助
 - 补充示例
 
-如果阁下对本模板的各方面有意见或建议，欢迎提出 [issues](https://github.com/Markhng/WHUT-Bachelor/issues) 或 [pull requests](https://github.com/Markhng/WHUT-Bachelor/pulls)。
+如果阁下对本模板的各方面有意见或建议，欢迎提出 [issues](https://github.com/huangyxi/WHUT-Bachelor/issues) 或 [pull requests](https://github.com/huangyxi/WHUT-Bachelor/pulls)。
