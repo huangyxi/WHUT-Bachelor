@@ -20,7 +20,7 @@
 
 **注意**：此时封面标题等部分字体将不再满足《武汉理工大学本科生毕业设计（论文）撰写规范》要求，如果需要在缺省华文中宋的环境下使用该字体，请在获取字体版权方授权的前提下，将字体命名为`STZhongsong.ttf`，并放置在项目根目录(`./`)。
 
-如果各章节标题 *黑体* 错误显示为 *粗宋体*，原因可能为上游 [latex3/latex3#867 bug](https://github.com/latex3/latex3/issues/867)，可以手动更新 TeX Live 2021，或者在 [`main.tex`](main.tex) 中导入文档类 [`whut-bachelor`](whut-bachelor.cls) 时传入参数 `heitipatch`(即 `\documentclass[heitipatch]{whut-bachelor}`)。
+如果各章节标题 *黑体* 错误显示为 *粗宋体*，原因可能为上游 [latex3/latex3#867 bug](https://github.com/latex3/latex3/issues/867)，可以手动更新至 TeX Live 2021 以上，或者在 [`main.tex`](main.tex) 中导入文档类 [`whut-bachelor`](whut-bachelor.cls) 时传入参数 `heitipatch`(即 `\documentclass[heitipatch]{whut-bachelor}`)。
 
 ### 目录结构
 
