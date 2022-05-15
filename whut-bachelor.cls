@@ -382,11 +382,6 @@
 	\section*{#1}%
 }
 \renewcommand{\bibfont}{\zihao{5}}
-\providecommand{\references}{%
-	\ClassWarning{whut-bachelor}{Command `\noexpand\references' is obsoleted, use `\noexpand\printbibliography' directly.}
-	\printbibliography
-
-}
 \fi
 
 
