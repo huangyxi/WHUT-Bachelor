@@ -373,7 +373,13 @@
 }
 
 %% define bibliography printing
-\ifwhut@options@nobib\else
+\ifwhut@options@nobib
+\providecommand{\printbibliography}{%
+	\ClassWarning{whut-bachelor}{%
+		Command `\noexpand\printbibliography' is defined in `biblatex' by default. You should either use your favorite bibliographic packages, or disable the `minimal' and/or `nobib' command.
+	}
+}
+\else
 \renewcommand{\refname}{\whut@cap@refname}
 \defbibheading{bibliography}[\refname]{%
 	\clearpage%
