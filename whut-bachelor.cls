@@ -96,6 +96,7 @@
 \RequirePackage{cprotect}
 \RequirePackage{listings}
 %\RequirePackage{tikz}
+%\usetikzlibrary{external}
 \fi
 
 \RequirePackage{hyperref}
@@ -335,7 +336,7 @@
 	\gdef\thesection{\appendixname\@Alph\c@section}
 	\gdef\thesubsection{\Alph{section}.\@arabic\c@subsection}
 	\gdef\thesubsubsection{\Alph{section}.\arabic{subsection}.\@arabic\c@subsubsection}
-	\tikzexternaldisable
+	% \ifwhut@options@minimal\else\tikzexternaldisable\fi
 	\let\@appendix\relex
 }
 
