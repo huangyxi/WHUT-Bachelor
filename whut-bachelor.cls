@@ -304,6 +304,9 @@
 		% fixskip = true,
 		% beforeskip = 0.5\baselineskip,
 		% afterskip = 0.5\baselineskip,
+	},
+	appendix = {
+		name = 附录,
 	}
 }
 
@@ -333,9 +336,9 @@
 \let\@appendix\appendix
 \renewcommand\appendix{\par
 	\@appendix
-	\gdef\thesection{\appendixname\@Alph\c@section}
-	\gdef\thesubsection{\Alph{section}.\@arabic\c@subsection}
-	\gdef\thesubsubsection{\Alph{section}.\arabic{subsection}.\@arabic\c@subsubsection}
+	% \gdef\thesection{\appendixname\@Alph\c@section} % defined in ctexsetup
+	\gdef\thesubsection{\appendixname\Alph{section}\@arabic\c@subsection}
+	\gdef\thesubsubsection{\appendixname\Alph{section}\arabic{subsection}.\@arabic\c@subsubsection}
 	% \ifwhut@options@minimal\else\tikzexternaldisable\fi
 	\let\@appendix\relex
 }
@@ -428,7 +431,7 @@
 \newcommand*{\whut@cap@indexname}{索引}
 \newcommand*{\whut@cap@figurename}{图}
 \newcommand*{\whut@cap@tablename}{表}
-\newcommand*{\whut@cap@appendixname}{附录}
+\newcommand*{\whut@cap@appendixname}{附}
 \newcommand*{\whut@cap@acknowledgement}{致~~谢}
 
 \newcommand*{\whut@cap@conjecture}{猜想}
