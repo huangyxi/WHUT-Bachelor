@@ -339,6 +339,9 @@
 	% \gdef\thesection{\appendixname\@Alph\c@section} % defined in ctexsetup
 	\gdef\thesubsection{\appendixname\Alph{section}\@arabic\c@subsection}
 	\gdef\thesubsubsection{\appendixname\Alph{section}\arabic{subsection}.\@arabic\c@subsubsection}
+	\renewcommand\thefigure{\Alph{section}\arabic{figure}}
+	\renewcommand\thetable{\Alph{section}\arabic{table}}
+	\renewcommand\theequation{A\arabic{equation}}
 	% \ifwhut@options@minimal\else\tikzexternaldisable\fi
 	\let\@appendix\relex
 }
