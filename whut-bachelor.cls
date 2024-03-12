@@ -61,7 +61,7 @@
 
 \ifwhut@options@heitipatch
 	\IfFontExistsTF{SimSun}{
-		\setCJKmainfont{SimSun}[BoldFont={SimHei}, ItalicFont={SimKai}]
+		\setCJKmainfont{SimSun}[BoldFont={SimHei}, ItalicFont={KaiTi}]
 	}{
 		\setCJKmainfont{FandolSong}[BoldFont={FandolHei}, ItalicFont={FandolKai}]
 	}
