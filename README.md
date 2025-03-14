@@ -3,7 +3,7 @@
 ## 简介
 
 - 编译要求：XeLaTeX & biber
-- 编译环境：TeX Live / MacTeX 2024
+- 编译环境：TeX Live / MacTeX 2025
 - 编译系统：Windows
 
 本项目首次发布于2019年9月29日。
